@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "885734060952",
+    "project_id": "happycooking-4b8ca",
+    "storage_bucket": "happycooking-4b8ca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885734060952:android:97b0ff5af5ca5b80bff1ed",
+        "android_client_info": {
+          "package_name": "com.example.happy_cooking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885734060952-6bdaemce8sefcr0mps7sr09a4ad1lo2l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEAW0-9P7xkF51yzyM2ndwZKqKgyZub4w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "885734060952-6bdaemce8sefcr0mps7sr09a4ad1lo2l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
