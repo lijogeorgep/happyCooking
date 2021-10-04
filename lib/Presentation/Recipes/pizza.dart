@@ -28,7 +28,7 @@ class _PizzaState extends State<Pizza> {
 
     super.initState();
     flickManager = FlickManager(
-      videoPlayerController: VideoPlayerController.network('https://firebasestorage.googleapis.com/v0/b/happycooking-4b8ca.appspot.com/o/pizza%2FchickenNuggets.mp4?alt=media&token=9aa6b97d-39c9-41aa-a7f4-e70c1ecd4d50'),
+      videoPlayerController: VideoPlayerController.network('https://firebasestorage.googleapis.com/v0/b/happycooking-4b8ca.appspot.com/o/pizza%2FitalianPizza.mp4?alt=media&token=e4926605-c3d0-4e82-bad3-884c3a5eebe0'),
 
     );
   }
