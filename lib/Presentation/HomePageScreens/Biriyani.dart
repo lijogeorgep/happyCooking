@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:happy_cooking/Presentation/Recipes/DindigulBiriyani.dart';
-import 'package:happy_cooking/Presentation/Recipes/MemoniBiriyani.dart';
-import 'package:happy_cooking/Presentation/Recipes/MugulaiBiriyani.dart';
+import 'package:happy_cooking/Presentation/Recipes/biriyani/DindigulBiriyani.dart';
+import 'package:happy_cooking/Presentation/Recipes/biriyani/MemoniBiriyani.dart';
+import 'package:happy_cooking/Presentation/Recipes/biriyani/MugulaiBiriyani.dart';
 class Biriyani extends StatefulWidget {
   const Biriyani({Key? key}) : super(key: key);
 
@@ -203,6 +203,7 @@ Widget banner() {
                   child: Stack(
                     //mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
+
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(

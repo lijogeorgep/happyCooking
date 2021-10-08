@@ -41,6 +41,7 @@ class _DindigualBiriyaniState extends State<DindigualBiriyani> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Text(
@@ -57,6 +58,20 @@ class _DindigualBiriyaniState extends State<DindigualBiriyani> {
                   child: FlickVideoPlayer(flickManager: flickManager),
                 ),
               ),
+              IconButton(onPressed: () async {
+                DocumentReference reference= firestoreInstance
+                    .collection('saved')
+                    .doc('videos');
+                Map<String, dynamic> data = <String, dynamic>{
+
+                  "videos":[
+                    "https://firebasestorage.googleapis.com/v0/b/happycooking-4b8ca.appspot.com/o/pizza%2FDindigul%20Thalapakatti%20Chicken%20Biryani_%20Chicken%20Biryani%20Recipe.mp4?alt=media&token=81a4bd83-14f6-44a6-a9b1-9935e385c894"
+                  ]
+                };
+                await reference.set(data)
+                    .whenComplete(() => print("Notes item added to the database"))
+                    .catchError((e) => print(e));
+              }, icon:Icon(Icons.save)),
               Align(
                 alignment: Alignment.topLeft,
                 child: Padding(
@@ -89,7 +104,7 @@ class _DindigualBiriyaniState extends State<DindigualBiriyani> {
                                 ingredients[index],
                                 style: TextStyle(
                                     fontSize: 18, fontFamily: 'Righteous'),
-                              )),
+                              ),),
                           trailing: Text(weight[index]),
                         ),
                       ),
