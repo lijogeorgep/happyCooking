@@ -17,14 +17,14 @@ class _MemoniBiriyaniState extends State<MemoniBiriyani> {
   List ingredients = [];
   List images = [];
   List weight = [];
-
+  String? ItemName;
   @override
   void initState() {
     _fetch();
 
     super.initState();
     flickManager = FlickManager(
-      videoPlayerController: VideoPlayerController.network('https://firebasestorage.googleapis.com/v0/b/happycooking-4b8ca.appspot.com/o/pizza%2Fdindigul.JPG.jpg?alt=media&token=f39f0815-81f8-4bab-9383-53ee343e3eec'),
+      videoPlayerController: VideoPlayerController.network('https://firebasestorage.googleapis.com/v0/b/happycooking-4b8ca.appspot.com/o/pizza%2FWorld%E2%80%99s%20Best%20Memoni%20Biryani%20Recipe%20_%20Restaurant%20Style%20Biryani%20Recipe%20_%20%E0%A4%AE%E0%A5%87%E0%A4%AE%E0%A4%A8%20%E0%A4%9A%E0%A4%BF%E0%A4%95%E0%A4%A8%20%E0%A4%AC%E0%A4%BF%E0%A4%B0%E0%A4%AF%E0%A4%BE%E0%A4%A8%E0%A5%80.mp4?alt=media&token=43fea475-e320-4e5e-8cdd-f5fe49da0881'),
     );
   }
 
@@ -44,7 +44,7 @@ class _MemoniBiriyaniState extends State<MemoniBiriyani> {
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Text(
-                  'Memoni Biriyani',
+                  ItemName!,
                   style: TextStyle(fontFamily: 'LuckiestGuy', fontSize: 20),
                 ),
               ),
@@ -57,6 +57,7 @@ class _MemoniBiriyaniState extends State<MemoniBiriyani> {
                   child: FlickVideoPlayer(flickManager: flickManager),
                 ),
               ),
+
               Align(
                 alignment: Alignment.topLeft,
                 child: Padding(
@@ -67,7 +68,7 @@ class _MemoniBiriyaniState extends State<MemoniBiriyani> {
                   ),
                 ),
               ),
-              Container(
+            /*  Container(
                 height: MediaQuery.of(context).size.height / 2,
                 width: MediaQuery.of(context).size.width,
                 child: ListView.separated(
@@ -101,7 +102,7 @@ class _MemoniBiriyaniState extends State<MemoniBiriyani> {
                     );
                   },
                 ),
-              ),
+              ),*/
             ],
           ),
         ),
@@ -112,16 +113,16 @@ class _MemoniBiriyaniState extends State<MemoniBiriyani> {
   _fetch() {
     firestoreInstance
         .collection('biriyani')
-        .doc('Dindigul')
+        .doc('Memoni')
         .get()
         .then((ds) {
 
 
       setState(() {
-
-        ingredients = ds['ingredients'];
-        images=ds['imgs'];
-        weight = ds['weights'];
+        ItemName= ds['item-name'];
+       // ingredients = ds['ingredients'];
+       // images=ds['imgs'];
+      //  weight = ds['weights'];
       });
     });
   }

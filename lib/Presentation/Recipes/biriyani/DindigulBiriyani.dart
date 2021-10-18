@@ -17,7 +17,7 @@ class _DindigualBiriyaniState extends State<DindigualBiriyani> {
   List ingredients = [];
 //  List images = [];
   List weight = [];
-
+  String? ItemName;
   @override
   void initState() {
     _fetch();
@@ -45,7 +45,7 @@ class _DindigualBiriyaniState extends State<DindigualBiriyani> {
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Text(
-                  'Dindigul Biriyani',
+                  ItemName!,
                   style: TextStyle(fontFamily: 'LuckiestGuy', fontSize: 20),
                 ),
               ),
@@ -66,6 +66,9 @@ class _DindigualBiriyaniState extends State<DindigualBiriyani> {
 
                   "videos":[
                     "https://firebasestorage.googleapis.com/v0/b/happycooking-4b8ca.appspot.com/o/pizza%2FDindigul%20Thalapakatti%20Chicken%20Biryani_%20Chicken%20Biryani%20Recipe.mp4?alt=media&token=81a4bd83-14f6-44a6-a9b1-9935e385c894"
+                  ],
+                  "productNames":[
+                    ItemName
                   ]
                 };
                 await reference.set(data)
@@ -137,6 +140,7 @@ class _DindigualBiriyaniState extends State<DindigualBiriyani> {
         ingredients = ds['ingredients'];
        // images=ds['imgs'];
         weight = ds['weights'];
+        ItemName= ds['item-name'];
       });
     });
   }

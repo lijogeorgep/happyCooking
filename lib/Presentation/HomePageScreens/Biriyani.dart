@@ -16,6 +16,7 @@ class _BiriyaniState extends State<Biriyani> {
 var img;
 List popularImages=[];
 List items=[];
+List videoList=[];
 List biriyani_types=[
   DindigualBiriyani(),
   MemoniBiriyani(),
@@ -126,8 +127,8 @@ Widget banner() {
 
         popularImages = ds['imgs'];
         items= ds['items'];
-        print("___________popular_______");
-        print( popularImages);
+        videoList=ds['vids'];
+
 
       });
     });
@@ -184,40 +185,40 @@ Widget banner() {
           itemCount: items.length,
     scrollDirection: Axis.horizontal,
     itemBuilder: (BuildContext context, int index) {
-            return GestureDetector(
-              onTap: (){
-    Navigator.push(
-    context,
-    MaterialPageRoute(
-    builder: (context) => biriyani_types[index]));
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 250,
-                decoration: BoxDecoration(
-                  border:Border.all(width: 1),
-                  borderRadius: BorderRadius.all(Radius.circular(10))
-                ),
-                //  color: Color(0xFF89C35C),
-                  child: Stack(
-                    //mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                height: 250,
+              decoration: BoxDecoration(
+                border:Border.all(width: 1),
+                borderRadius: BorderRadius.all(Radius.circular(10))
+              ),
+              //  color: Color(0xFF89C35C),
+                child: Stack(
+                  //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
 
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 200,
-                            width: 200,
-                            child: Image.network(popularImages[index],fit: BoxFit.cover,),),
-                      ),
-                      Positioned(
-                        top:230,
-                          left: 50,
-                          child: Text(items[index],style: TextStyle(fontFamily: 'Righteous'),),),
-                      Positioned(
-                        top: 80,
-                        left: 80,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        height: 200,
+                          width: 200,
+                          child: Image.network(popularImages[index],fit: BoxFit.cover,),),
+                    ),
+                    Positioned(
+                      top:230,
+                        left: 50,
+                        child: Text(items[index],style: TextStyle(fontFamily: 'Righteous'),),),
+                    Positioned(
+                      top: 80,
+                      left: 80,
+                      child: GestureDetector(
+                        onTap: (){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => biriyani_types[index]));
+                        },
                         child: Opacity(
                           opacity: 0.7,
                           child: Image.asset(
@@ -227,8 +228,35 @@ Widget banner() {
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                    Positioned(
+                      top:10,
+                      right:10,
+                      child:GestureDetector(
+                        onTap: () async {
+                          DocumentReference reference= firestoreInstance
+                              .collection('saved').doc('videos');
+                          Map<String, dynamic> data = <String, dynamic>{
+
+                            "videos":[
+                              videoList[index]
+                                  ],
+                            "productNames":[
+                              items[index]
+                            ]
+                          };
+                          await reference.set(data)
+                              .whenComplete(() => print("Notes item added to the database"))
+                              .catchError((e) => print(e));
+                        },
+                        child: Opacity(
+                          opacity:0.7 ,
+                          child: Image.asset('assets/icons/saveForLater.png', scale: 11,  color:Color(0xFF1589FF),),
+                        ),
+                      ),
+                    ),
+
+                  ],
                 ),
               ),
             );

@@ -24,7 +24,7 @@ class _MugulaiBiriyaniState extends State<MugulaiBiriyani> {
 
     super.initState();
     flickManager = FlickManager(
-      videoPlayerController: VideoPlayerController.network('https://firebasestorage.googleapis.com/v0/b/happycooking-4b8ca.appspot.com/o/pizza%2Fdindigul.JPG.jpg?alt=media&token=f39f0815-81f8-4bab-9383-53ee343e3eec'),
+      videoPlayerController: VideoPlayerController.network('https://firebasestorage.googleapis.com/v0/b/happycooking-4b8ca.appspot.com/o/pizza%2FHow%20To%20Make%20Authentic%20Mughlai%20Chicken%20Biryani%20_%20Step%20By%20Step%20Procedure.mp4?alt=media&token=a2fed219-2751-44da-a606-a8331eec0f3b'),
     );
   }
 
